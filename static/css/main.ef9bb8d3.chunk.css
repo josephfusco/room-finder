@@ -1,0 +1,2 @@
+:root{--page-bg-color:#fff;--sidebar-bg-color:#f8f8f8;--highlight-color:#7f0}*,:after,:before{box-sizing:border-box}body{background-color:#fff;background-color:var(--page-bg-color);margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.App{display:flex}.Nav{background-color:#f8f8f8;background-color:var(--sidebar-bg-color);width:280px}.OfficeMap{width:100%}
+/*# sourceMappingURL=main.ef9bb8d3.chunk.css.map */
