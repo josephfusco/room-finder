@@ -1,0 +1,111 @@
+@import "~normalize.css/normalize.css";
+
+:root {
+  --primary-color: #cc5722;
+  --page-bg-color: #232323;
+  --sidebar-bg-color: #333;
+  --highlight-color: #00ff00;
+  --link-color: #ccc;
+  --link-color--hover: var(--primary-color);
+  --sidebar-width: 220px;
+}
+
+* {
+  box-sizing: border-box;
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  overflow: hidden;
+  background-color: var(--page-bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  display: flex;
+}
+
+.Info {
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  margin-top: 2rem;
+  line-height: 85px;
+}
+
+.Nav {
+  backface-visibility: hidden;
+  background-color: var(--sidebar-bg-color);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  width: var(--sidebar-width);
+}
+
+.OfficeMap {
+  width: 100%;
+}
+
+rect.room {
+  cursor: pointer;
+  fill: var(--page-bg-color); // Needed to make shape clickable.
+  transition: 0.2s ease-in-out;
+  stroke: var(--page-bg-color);
+  stroke-width: 3;
+  position: relative;
+  backface-visibility: hidden;
+  &:active {
+    fill: var(--highlight-color);
+  }
+}
+
+.page-title {
+  margin: 0 0 0 1.25rem;
+  font-size: 3rem;
+  letter-spacing: 0.06em;
+  color: var(--primary-color);
+}
+
+.logo {
+  display: block;
+  fill: var(--primary-color);
+  height: auto;
+  margin: 2rem auto 3rem;
+  max-width: 100px;
+}
+
+.room-list {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+
+  a {
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.2);
+    color: var(--link-color);
+    display: block;
+    font-size: 1em;
+    letter-spacing: 0.06em;
+    line-height: 1.8;
+    padding: 0.2rem 1.2rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    user-select: none;
+
+    &:hover,
+    &:focus,
+    &.active {
+      color: var(--link-color--hover);
+    }
+  }
+
+  li:last-child a {
+    box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 0 -1px rgba(0, 0, 0, 0.2);
+  }
+}
