@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Nav } from "components/Nav";
 import { Info } from "components/Info";
 import { OfficeMap } from "components/OfficeMap";
+import getTitle from "helpers/getTitle";
+
 import "./App.scss";
 
 class App extends Component {
@@ -11,8 +13,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
-    document.title = "Amazing Page";
+    const { pathname } = this.props.location;
+    const title = getTitle(pathname) || null;
+
+    document.title = title ? `Room Finder - ${title}` : "Room Finder";
   }
 
   render() {

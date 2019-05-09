@@ -1,6 +1,6 @@
 import React from "react";
-import rooms from "rooms";
 import { withRouter } from "react-router-dom";
+import getTitle from "helpers/getTitle";
 
 const Info = withRouter(props => {
   const { pathname } = props.location;
@@ -12,12 +12,5 @@ const Info = withRouter(props => {
     </header>
   );
 });
-
-function getTitle(pathname) {
-  const pathnameNoSlash = pathname.replace(/\/+$/, "");
-  const room = rooms.filter(room => room.slug === pathnameNoSlash)[0];
-  const { title } = room || "";
-  return title;
-}
 
 export default Info;
