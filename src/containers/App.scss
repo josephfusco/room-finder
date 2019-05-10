@@ -107,6 +107,7 @@ rect.room {
 
   @include mobile {
     font-size: 2.5rem;
+    min-height: 65px;
   }
 }
 
