@@ -1,25 +1,20 @@
 {
   "short_name": "Room Finder",
   "name": "Room Finder",
+  "start_url": "/",
+  "background_color": "#232323",
+  "theme_color": "#99c221",
+  "display": "standalone",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "android-chrome-192x192.png",
+      "src": "/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "android-chrome-512x512.png",
+      "src": "/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#99c221",
-  "background_color": "#232323"
+  ]
 }
