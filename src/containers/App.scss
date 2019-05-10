@@ -1,13 +1,19 @@
 @import "~normalize.css/normalize.css";
 
 :root {
-  --primary-color: #cc5722;
-  --page-bg-color: #232323;
-  --sidebar-bg-color: #333;
-  --highlight-color: #00ff00;
-  --link-color: #ccc;
-  --link-color--hover: var(--primary-color);
-  --sidebar-width: 220px;
+  --rf-primary-color: #99c221;
+  --rf-page-bg-color: #232323;
+  --rf-sidebar-bg-color: #333;
+  --rf-highlight-color: #00ff00;
+  --rf-link-color: #ccc;
+  --rf-link-color--hover: var(--rf-primary-color);
+  --rf-sidebar-width: 220px;
+}
+
+@mixin mobile {
+ @media screen and (max-width: 900px) {
+   @content;
+ }
 }
 
 * {
@@ -19,8 +25,7 @@
 }
 
 body {
-  overflow: hidden;
-  background-color: var(--page-bg-color);
+  background-color: var(--rf-page-bg-color);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -28,41 +33,68 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
 }
 
 .App {
   display: flex;
+
+  @include mobile {
+    flex-direction: column;
+    flex-direction: column-reverse;
+  }
 }
 
 .Info {
   position: fixed;
   top: 0;
-  left: var(--sidebar-width);
+  left: var(--rf-sidebar-width);
   margin-top: 2rem;
-  line-height: 85px;
+  line-height: 65px;
+  backface-visibility: hidden;
+
+  @include mobile {
+    text-align: center;
+    position: relative;
+    left: auto;
+    top: auto;
+    margin-top: 1rem;
+  }
 }
 
 .Nav {
-  backface-visibility: hidden;
-  background-color: var(--sidebar-bg-color);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-  width: var(--sidebar-width);
+  background-color: var(--rf-sidebar-bg-color);
+  width: var(--rf-sidebar-width);
+
+  @include mobile {
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .OfficeMap {
   width: 100%;
 }
 
+#office-map {
+  @include mobile {
+    height: auto !important;
+    width: 100%;
+    margin: 1rem 0;
+  }
+}
+
 rect.room {
   cursor: pointer;
-  fill: var(--page-bg-color); // Needed to make shape clickable.
+  fill: var(--rf-page-bg-color); // Needed to make shape clickable.
   transition: 0.2s ease-in-out;
-  stroke: var(--page-bg-color);
+  stroke: var(--rf-page-bg-color);
   stroke-width: 3;
   position: relative;
   backface-visibility: hidden;
   &:active {
-    fill: var(--highlight-color);
+    fill: var(--rf-highlight-color);
   }
 }
 
@@ -70,15 +102,24 @@ rect.room {
   margin: 0 0 0 1.25rem;
   font-size: 3rem;
   letter-spacing: 0.06em;
-  color: var(--primary-color);
+  color: var(--rf-primary-color);
+  animation: fadeIn 1s forwards;
+
+  @include mobile {
+    font-size: 2.5rem;
+  }
 }
 
 .logo {
   display: block;
-  fill: var(--primary-color);
+  fill: var(--rf-primary-color);
   height: auto;
   margin: 2rem auto 3rem;
   max-width: 100px;
+
+  @include mobile {
+    display: none;
+  }
 }
 
 .room-list {
@@ -86,9 +127,16 @@ rect.room {
   margin: 1rem 0;
   padding: 0;
 
+  @include mobile {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   a {
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.2);
-    color: var(--link-color);
+    color: var(--rf-link-color);
     display: block;
     font-size: 1em;
     letter-spacing: 0.06em;
@@ -98,14 +146,40 @@ rect.room {
     transition: color 0.2s;
     user-select: none;
 
+    @include mobile {
+      box-shadow: none;
+      padding: .8rem 1rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+    }
+
     &:hover,
     &:focus,
     &.active {
-      color: var(--link-color--hover);
+      color: var(--rf-link-color--hover);
+
+      @include mobile {
+        border-color: var(--rf-link-color--hover);
+      }
     }
   }
 
   li:last-child a {
     box-shadow: inset 0 1px rgba(0, 0, 0, 0.2), inset 0 -1px rgba(0, 0, 0, 0.2);
+
+    @include mobile {
+      box-shadow: none;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

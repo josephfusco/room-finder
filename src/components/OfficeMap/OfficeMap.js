@@ -6,7 +6,7 @@ const OfficeMap = withRouter(props => {
   const { pathname } = props.location;
 
   const highlightStyles = {
-    fill: "var(--highlight-color)"
+    fill: "var(--rf-highlight-color)"
   };
 
   return (

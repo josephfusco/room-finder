@@ -22,9 +22,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Info />
         <Nav />
         <OfficeMap />
+        <Info />
       </div>
     );
   }
