@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import getTitle from "helpers/getTitle";
 
 const OfficeMap = withRouter(props => {
   const { pathname } = props.location;
+  const title = getTitle(pathname);
 
   const highlightStyles = {
     fill: "var(--rf-highlight-color)"
@@ -11,6 +14,14 @@ const OfficeMap = withRouter(props => {
 
   return (
     <div className="OfficeMap" aria-hidden="true">
+      <Helmet>
+        <title>{`Room Finder - ${title}`}</title>
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Room Finder" />
+        <meta property="og:title" content={`Room Finder - ${title}`} />
+        <meta property="og:description" content={`Room Finder - ${title}`} />
+        <meta property="og:image" content="http://embed.widencdn.net/img/masonite/1fjhmcfznp/exact/Ybor-Exterior_2017_0005.jpeg" />
+      </Helmet>
       <svg
         id="office-map"
         xmlns="http://www.w3.org/2000/svg"
