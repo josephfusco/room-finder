@@ -6,7 +6,10 @@ import getTitle from "helpers/getTitle";
 
 const OfficeMap = withRouter(props => {
   const { pathname } = props.location;
-  const title = getTitle(pathname);
+  let title = getTitle(pathname) || '';
+  if (title) {
+    title = `- ${title}`
+  }
 
   const highlightStyles = {
     fill: "var(--rf-highlight-color)"
@@ -15,11 +18,11 @@ const OfficeMap = withRouter(props => {
   return (
     <div className="OfficeMap" aria-hidden="true">
       <Helmet>
-        <title>{`Room Finder - ${title}`}</title>
+        <title>{`Room Finder ${title}`}</title>
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Room Finder" />
-        <meta property="og:title" content={`Room Finder - ${title}`} />
-        <meta property="og:description" content={`Room Finder - ${title}`} />
+        <meta property="og:title" content={`Room Finder ${title}`} />
+        <meta property="og:description" content={`Room Finder ${title}`} />
         <meta
           property="og:image"
           content="http://embed.widencdn.net/img/masonite/1fjhmcfznp/exact/Ybor-Exterior_2017_0005.jpeg"
