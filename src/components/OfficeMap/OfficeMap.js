@@ -20,7 +20,10 @@ const OfficeMap = withRouter(props => {
         <meta property="og:site_name" content="Room Finder" />
         <meta property="og:title" content={`Room Finder - ${title}`} />
         <meta property="og:description" content={`Room Finder - ${title}`} />
-        <meta property="og:image" content="http://embed.widencdn.net/img/masonite/1fjhmcfznp/exact/Ybor-Exterior_2017_0005.jpeg" />
+        <meta
+          property="og:image"
+          content="http://embed.widencdn.net/img/masonite/1fjhmcfznp/exact/Ybor-Exterior_2017_0005.jpeg"
+        />
       </Helmet>
       <svg
         id="office-map"
@@ -32,6 +35,13 @@ const OfficeMap = withRouter(props => {
       >
         <g fill="none" fillRule="evenodd" transform="translate(18 13)">
           <g transform="translate(226 1)">
+            <polygon
+                className="room"
+                onClick={() => props.history.push("/larmon/")}
+                style={"/larmon/" === pathname ? highlightStyles : null}
+                points="86 199 136 199 136 295 118.5 295 118.5 348 47.3555322 348 47.3555322 341.5 0 341.5 0 283 20.5 246.5"
+                transform="translate(-226 0)"
+              />
             <rect
               className="room"
               onClick={() => props.history.push("/optimize/")}

@@ -85,7 +85,7 @@ body {
   }
 }
 
-rect.room {
+.room {
   cursor: pointer;
   fill: var(--rf-page-bg-color); // Needed to make shape clickable.
   transition: 0.2s ease-in-out;
