@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { HashRouter, Route, Switch, Redirect } from "react-router-dom";
 import App from "containers/App";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 import * as serviceWorker from "serviceWorker";
 
-ReactGA.initialize('UA-20627796-9');
+ReactGA.initialize("UA-20627796-9");
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(

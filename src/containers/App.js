@@ -20,11 +20,19 @@ class App extends Component {
   }
 
   render() {
+    const params = new URLSearchParams(this.props.location.search)
+    const hideNav = (params.get('hideNav') === 'true');
+    const hideInfo = (params.get('hideInfo') === 'true');
+
     return (
       <div className="App">
-        <Nav />
+        {!hideNav &&
+          <Nav />
+        }
         <OfficeMap />
-        <Info />
+        {!hideInfo &&
+          <Info />
+        }
       </div>
     );
   }
