@@ -8,7 +8,17 @@ const Info = withRouter(props => {
 
   return (
     <header className="Info">
-      <h1 className="page-title">{title}</h1>
+      <p className="Info__SubTitle">Masonite</p>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="320"
+        width="400"
+        preserveAspectRatio="none"
+        className="Info__Triangle"
+      >
+        <polygon points="0,0 400,0 200,300" stroke="#36e2f8" stroke-width="3" />
+      </svg>
+      <h1 className="Info__PageTitle">{title}</h1>
     </header>
   );
 });

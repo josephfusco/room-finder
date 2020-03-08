@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Nav } from "components/Nav";
 import { Info } from "components/Info";
 import { OfficeMap } from "components/OfficeMap";
+import { SvgDefs } from "components/SvgDefs";
 import getTitle from "helpers/getTitle";
 
 import "./App.scss";
@@ -20,19 +21,17 @@ class App extends Component {
   }
 
   render() {
-    const params = new URLSearchParams(this.props.location.search)
-    const hideNav = (params.get('hideNav') === 'true');
-    const hideInfo = (params.get('hideInfo') === 'true');
+    const params = new URLSearchParams(this.props.location.search);
+    const hideNav = params.get("hideNav") === "true";
+    const hideInfo = params.get("hideInfo") === "true";
 
     return (
       <div className="App">
-        {!hideNav &&
-          <Nav />
-        }
+        {!hideNav && <Nav />}
         <OfficeMap />
-        {!hideInfo &&
-          <Info />
-        }
+        {!hideInfo && <Info />}
+        <SvgDefs />
+        <div className="Overlay" />
       </div>
     );
   }

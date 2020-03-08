@@ -4,15 +4,15 @@ import { withRouter } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import getTitle from "helpers/getTitle";
 
-const OfficeMap = withRouter(props => {
+const OfficeMap = props => {
   const { pathname } = props.location;
-  let title = getTitle(pathname) || '';
+  let title = getTitle(pathname) !== "Room Finder" ? getTitle(pathname) : "";
   if (title) {
-    title = `- ${title}`
+    title = `- ${title}`;
   }
 
   const highlightStyles = {
-    fill: "var(--rf-highlight-color)"
+    fill: "url(#gradient-1)"
   };
 
   return (
@@ -29,7 +29,7 @@ const OfficeMap = withRouter(props => {
         />
       </Helmet>
       <svg
-        id="office-map"
+        id="Map"
         xmlns="http://www.w3.org/2000/svg"
         width="720"
         height="375"
@@ -39,14 +39,14 @@ const OfficeMap = withRouter(props => {
         <g fill="none" fillRule="evenodd" transform="translate(18 13)">
           <g transform="translate(226 1)">
             <polygon
-                className="room"
-                onClick={() => props.history.push("/larmon/")}
-                style={"/larmon/" === pathname ? highlightStyles : null}
-                points="86 199 136 199 136 295 118.5 295 118.5 348 47.3555322 348 47.3555322 341.5 0 341.5 0 283 20.5 246.5"
-                transform="translate(-226 0)"
-              />
+              className="Room"
+              onClick={() => props.history.push("/larmon/")}
+              style={"/larmon/" === pathname ? highlightStyles : null}
+              points="86 199 136 199 136 295 118.5 295 118.5 348 47.3555322 348 47.3555322 341.5 0 341.5 0 283 20.5 246.5"
+              transform="translate(-226 0)"
+            />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/optimize/")}
               style={"/optimize/" === pathname ? highlightStyles : null}
               width="21"
@@ -54,7 +54,7 @@ const OfficeMap = withRouter(props => {
               x="331"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/inspire/")}
               style={"/inspire/" === pathname ? highlightStyles : null}
               width="21"
@@ -63,7 +63,7 @@ const OfficeMap = withRouter(props => {
               y="31"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/discover/")}
               style={"/discover/" === pathname ? highlightStyles : null}
               width="21"
@@ -72,7 +72,7 @@ const OfficeMap = withRouter(props => {
               y="61"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/enhance/")}
               style={"/enhance/" === pathname ? highlightStyles : null}
               width="21"
@@ -81,7 +81,7 @@ const OfficeMap = withRouter(props => {
               y="91"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/ybor/")}
               style={"/ybor/" === pathname ? highlightStyles : null}
               width="41"
@@ -90,7 +90,7 @@ const OfficeMap = withRouter(props => {
               y="228"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/el-centro/")}
               style={"/el-centro/" === pathname ? highlightStyles : null}
               width="39"
@@ -99,7 +99,7 @@ const OfficeMap = withRouter(props => {
               y="228"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/purpose/")}
               style={"/purpose/" === pathname ? highlightStyles : null}
               width="72"
@@ -108,7 +108,7 @@ const OfficeMap = withRouter(props => {
               y="286"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/influence/")}
               style={"/influence/" === pathname ? highlightStyles : null}
               width="80"
@@ -116,7 +116,7 @@ const OfficeMap = withRouter(props => {
               x="375"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/performance/")}
               style={"/performance/" === pathname ? highlightStyles : null}
               width="51"
@@ -125,7 +125,7 @@ const OfficeMap = withRouter(props => {
               y="222"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/breakthrough/")}
               style={"/breakthrough/" === pathname ? highlightStyles : null}
               width="25"
@@ -133,7 +133,7 @@ const OfficeMap = withRouter(props => {
               y="207"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/excellence/")}
               style={"/excellence/" === pathname ? highlightStyles : null}
               width="26"
@@ -142,7 +142,7 @@ const OfficeMap = withRouter(props => {
               y="207"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/maximize/")}
               style={"/maximize/" === pathname ? highlightStyles : null}
               width="25"
@@ -151,7 +151,7 @@ const OfficeMap = withRouter(props => {
               y="259"
             />
             <rect
-              className="room"
+              className="Room"
               onClick={() => props.history.push("/focus/")}
               style={"/focus/" === pathname ? highlightStyles : null}
               width="25"
@@ -287,9 +287,9 @@ const OfficeMap = withRouter(props => {
       </svg>
     </div>
   );
-});
+};
 
-export default OfficeMap;
+export default withRouter(OfficeMap);
 
 OfficeMap.propTypes = {
   highlight: PropTypes.oneOf([
